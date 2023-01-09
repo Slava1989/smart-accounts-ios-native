@@ -136,7 +136,7 @@ final class WidgetMainController: UIViewController {
 
     private lazy var chartImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "chart")
+        imageView.image = UIImage(named: "dashboard")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
