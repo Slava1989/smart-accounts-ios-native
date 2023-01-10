@@ -6,9 +6,20 @@
 //
 
 import UIKit
+import Combine
 
-final class AddAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    weak var viewModel: AddAccountViewModelInput?
+final class AddAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SetupViewDelegate {
+    private var viewModel: AddAccountViewModelInput
+    private var banks: [Bank] = []
+    private var heightConstraint: NSLayoutConstraint?
+    private var cancellable = Set<AnyCancellable>()
+
+    private lazy var contentContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var disclaimerContainer: UIView = {
         let view = UIView()
@@ -55,13 +66,22 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
         let tablewView = UITableView()
         tablewView.delegate = self
         tablewView.dataSource = self
+        tablewView.separatorStyle = .none
+        tablewView.register(BankCell.self, forCellReuseIdentifier: "bankCell")
         tablewView.translatesAutoresizingMaskIntoConstraints = false
         return tablewView
     }()
 
+    private lazy var setupView: SetupView = {
+        let setupView = SetupView(frame: .zero)
+        setupView.delegate = self
+        setupView.translatesAutoresizingMaskIntoConstraints = false
+        return setupView
+    }()
+
     init(viewModel: AddAccountViewModelInput) {
-        super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
@@ -73,14 +93,23 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
 
         view.backgroundColor = UIColor(named: "lightGray")
         setupUI()
+        getBanks()
     }
 
     private func setupUI() {
-        view.addSubview(disclaimerContainer)
+        view.addSubview(contentContainerView)
         NSLayoutConstraint.activate([
-            disclaimerContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            disclaimerContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            disclaimerContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            contentContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            contentContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            contentContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            contentContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+
+        contentContainerView.addSubview(disclaimerContainer)
+        NSLayoutConstraint.activate([
+            disclaimerContainer.topAnchor.constraint(equalTo: contentContainerView.topAnchor, constant: 10),
+            disclaimerContainer.leadingAnchor.constraint(equalTo: contentContainerView.leadingAnchor, constant: 10),
+            disclaimerContainer.trailingAnchor.constraint(equalTo: contentContainerView.trailingAnchor, constant: -10),
             disclaimerContainer.heightAnchor.constraint(equalToConstant: 90)
         ])
 
@@ -99,26 +128,135 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
             disclaimerLabel.trailingAnchor.constraint(equalTo: infoImageView.leadingAnchor, constant: 40)
         ])
 
-        view.addSubview(bankListContainer)
+        contentContainerView.addSubview(bankListContainer)
         NSLayoutConstraint.activate([
             bankListContainer.topAnchor.constraint(equalTo: disclaimerContainer.bottomAnchor, constant: 10),
-            bankListContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            bankListContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            bankListContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            bankListContainer.leadingAnchor.constraint(equalTo: contentContainerView.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            bankListContainer.trailingAnchor.constraint(equalTo: contentContainerView.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            bankListContainer.bottomAnchor.constraint(equalTo: contentContainerView.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+        ])
+
+        bankListContainer.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: bankListContainer.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: bankListContainer.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: bankListContainer.trailingAnchor, constant: -10),
+            tableView.bottomAnchor.constraint(equalTo: bankListContainer.bottomAnchor)
+        ])
+
+        view.addSubview(setupView)
+        NSLayoutConstraint.activate([
+            setupView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            setupView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            setupView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
 
+    private func getBanks() {
+        viewModel.fetchBanks()
+        viewModel.subject.sink(receiveCompletion: { completion in
+
+        }, receiveValue: { [weak self] banks in
+            self?.banks = banks
+            self?.tableView.reloadData()
+        }).store(in: &cancellable)
+    }
+
+    private func prepareSetupAccountView() {
+        disclaimerContainer.backgroundColor = .gray
+        contentContainerView.backgroundColor = .gray
+        bankListContainer.backgroundColor = .gray
+
+        disclaimerContainer.alpha = 0.4
+        contentContainerView.alpha = 0.4
+        bankListContainer.alpha = 0.4
+
+        contentContainerView.isUserInteractionEnabled = false
+        setupView.backgroundColor = .white
+
+        if let heightConstraint = heightConstraint {
+            heightConstraint.constant = 250
+        } else {
+            heightConstraint = setupView.heightAnchor.constraint(equalToConstant: 250)
+            heightConstraint?.isActive = true
+        }
+
+        UIView.animate(withDuration: 0.5, delay: 0) {
+
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    private func closeAccountView() {
+        disclaimerContainer.backgroundColor = .white
+        contentContainerView.backgroundColor = .white
+        bankListContainer.backgroundColor = .white
+
+        disclaimerContainer.alpha = 1
+        contentContainerView.alpha = 1
+        bankListContainer.alpha = 1
+
+        contentContainerView.isUserInteractionEnabled = true
+        setupView.backgroundColor = .white
+
+        self.view.superview?.layoutIfNeeded()
+
+        heightConstraint?.constant = 0
+
+        UIView.animate(withDuration: 0.5, delay: 0) {
+
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    private func configureSetupAccontView(bankTitle: String) {
+        setupView.setBankTitle(bankTitle: bankTitle)
+    }
+
     //MARK: UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        prepareSetupAccountView()
+        configureSetupAccontView(bankTitle: banks[indexPath.row].name)
+
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 70
     }
 
     //MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return banks.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let bankCell = tableView.dequeueReusableCell(withIdentifier: "bankCell", for: indexPath) as? BankCell else {
+            return UITableViewCell()
+        }
+
+        bankCell.config(bank: banks[indexPath.row])
+        return bankCell
+    }
+
+    //MARK: SetupViewDelegate
+    func didTapClose() {
+        closeAccountView()
+    }
+
+    func showAccountTitleField() {
+        heightConstraint?.constant += 100
+        UIView.animate(withDuration: 0.5, delay: 0) {
+
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    func showCurrencyFormField() {
+        heightConstraint?.constant += 100
+        UIView.animate(withDuration: 0.5, delay: 0) {
+
+            self.view.layoutIfNeeded()
+        }
     }
 }

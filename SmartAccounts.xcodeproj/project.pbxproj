@@ -33,6 +33,12 @@
 		BA20CF2C296C62A400F3C93A /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF2B296C62A400F3C93A /* AddAccountViewModel.swift */; };
 		BA20CF2F296CB17700F3C93A /* NetworkBankManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF2E296CB17700F3C93A /* NetworkBankManager.swift */; };
 		BA20CF31296CB23600F3C93A /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF30296CB23600F3C93A /* Bank.swift */; };
+		BA20CF34296CC38B00F3C93A /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF33296CC38B00F3C93A /* BankCell.swift */; };
+		BA20CF37296CD51300F3C93A /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF36296CD51300F3C93A /* FormField.swift */; };
+		BA20CF3A296CD5E100F3C93A /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF39296CD5E100F3C93A /* SetupView.swift */; };
+		BA20CF3C296D844C00F3C93A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */; };
+		BA20CF40296DADE700F3C93A /* TableOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF3F296DADE700F3C93A /* TableOptions.swift */; };
+		BA20CF43296DAF9E00F3C93A /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF42296DAF9E00F3C93A /* OptionCell.swift */; };
 		BA67D44A2954B585005B57C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D4492954B585005B57C9 /* AppDelegate.swift */; };
 		BA67D44C2954B585005B57C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D44B2954B585005B57C9 /* SceneDelegate.swift */; };
 		BA67D44E2954B585005B57C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D44D2954B585005B57C9 /* ViewController.swift */; };
@@ -86,6 +92,12 @@
 		BA20CF2B296C62A400F3C93A /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
 		BA20CF2E296CB17700F3C93A /* NetworkBankManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBankManager.swift; sourceTree = "<group>"; };
 		BA20CF30296CB23600F3C93A /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
+		BA20CF33296CC38B00F3C93A /* BankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
+		BA20CF36296CD51300F3C93A /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		BA20CF39296CD5E100F3C93A /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		BA20CF3F296DADE700F3C93A /* TableOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOptions.swift; sourceTree = "<group>"; };
+		BA20CF42296DAF9E00F3C93A /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		BA67D4462954B585005B57C9 /* SmartAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA67D4492954B585005B57C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA67D44B2954B585005B57C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +270,10 @@
 		BA20CF26296C626C00F3C93A /* AddAccount */ = {
 			isa = PBXGroup;
 			children = (
+				BA20CF3E296DADAC00F3C93A /* TableOptions */,
+				BA20CF38296CD5CC00F3C93A /* SetupFlow */,
+				BA20CF35296CD4DD00F3C93A /* FormField */,
+				BA20CF32296CC38200F3C93A /* Cell */,
 				BA20CF27296C628600F3C93A /* AddAccountCoordinator.swift */,
 				BA20CF29296C629800F3C93A /* AddAccountViewController.swift */,
 				BA20CF2B296C62A400F3C93A /* AddAccountViewModel.swift */,
@@ -271,6 +287,48 @@
 				BA20CF2E296CB17700F3C93A /* NetworkBankManager.swift */,
 			);
 			path = NetworkBankList;
+			sourceTree = "<group>";
+		};
+		BA20CF32296CC38200F3C93A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BA20CF33296CC38B00F3C93A /* BankCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BA20CF35296CD4DD00F3C93A /* FormField */ = {
+			isa = PBXGroup;
+			children = (
+				BA20CF36296CD51300F3C93A /* FormField.swift */,
+				BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */,
+			);
+			path = FormField;
+			sourceTree = "<group>";
+		};
+		BA20CF38296CD5CC00F3C93A /* SetupFlow */ = {
+			isa = PBXGroup;
+			children = (
+				BA20CF39296CD5E100F3C93A /* SetupView.swift */,
+			);
+			path = SetupFlow;
+			sourceTree = "<group>";
+		};
+		BA20CF3E296DADAC00F3C93A /* TableOptions */ = {
+			isa = PBXGroup;
+			children = (
+				BA20CF41296DAF9400F3C93A /* Cell */,
+				BA20CF3F296DADE700F3C93A /* TableOptions.swift */,
+			);
+			path = TableOptions;
+			sourceTree = "<group>";
+		};
+		BA20CF41296DAF9400F3C93A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BA20CF42296DAF9E00F3C93A /* OptionCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		BA67D43D2954B585005B57C9 = {
@@ -449,6 +507,7 @@
 			files = (
 				BA1F4DE82962F46100D8EB55 /* LaunchScreen.storyboard in Resources */,
 				BA1F4DE52962F46100D8EB55 /* Assets.xcassets in Resources */,
+				BA20CF3C296D844C00F3C93A /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +632,8 @@
 				BA1F4DF22963171500D8EB55 /* AllAccountsViewModel.swift in Sources */,
 				BA1F4DE02962F45D00D8EB55 /* AllAccountsViewController.swift in Sources */,
 				BA20CF31296CB23600F3C93A /* Bank.swift in Sources */,
+				BA20CF3A296CD5E100F3C93A /* SetupView.swift in Sources */,
+				BA20CF34296CC38B00F3C93A /* BankCell.swift in Sources */,
 				BA20CF192968662D00F3C93A /* CardCell.swift in Sources */,
 				BA20CF0B2964773800F3C93A /* AllTransactionsCell.swift in Sources */,
 				BA20CF2F296CB17700F3C93A /* NetworkBankManager.swift in Sources */,
@@ -580,11 +641,14 @@
 				BA20CF2C296C62A400F3C93A /* AddAccountViewModel.swift in Sources */,
 				BA20CF1229683D9A00F3C93A /* AllTransactionsViewModel.swift in Sources */,
 				BA20CF0229633C0E00F3C93A /* BankAccount.swift in Sources */,
+				BA20CF43296DAF9E00F3C93A /* OptionCell.swift in Sources */,
 				BA20CF0429633FEF00F3C93A /* NetworkError.swift in Sources */,
 				BA1F4DDC2962F45D00D8EB55 /* AppDelegate.swift in Sources */,
+				BA20CF37296CD51300F3C93A /* FormField.swift in Sources */,
 				BA1F4DDE2962F45D00D8EB55 /* SceneDelegate.swift in Sources */,
 				BA20CF0729639AF400F3C93A /* BankAccountCell.swift in Sources */,
 				BA20CF10296838C800F3C93A /* AllTransactionsCoordinator.swift in Sources */,
+				BA20CF40296DADE700F3C93A /* TableOptions.swift in Sources */,
 				BA20CF2A296C629800F3C93A /* AddAccountViewController.swift in Sources */,
 				BA20CF1429683EF400F3C93A /* Transaction.swift in Sources */,
 			);
