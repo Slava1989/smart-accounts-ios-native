@@ -33,6 +33,7 @@ final class AllAccountsViewModel: AccountsViewModelInput {
         fetchBankAccounts() { [weak self] bankAccounts in
             guard let self = self else { return }
 
+            self.bankAccounts = bankAccounts
             self.totalAmount = bankAccounts.reduce(0) { $0 + $1.amount }
             let entries = bankAccounts.map { bankAccount -> PieChartDataEntry in
                 let percentValue = bankAccount.amount / self.totalAmount * 100
@@ -50,7 +51,7 @@ final class AllAccountsViewModel: AccountsViewModelInput {
     }
 
     func goToAllTransactions() {
-        coordinator.goToAllTransactions()
+        coordinator.goToAllTransactions(bankAccounts: bankAccounts ?? [])
     }
 
     func didTapAddAccount() {

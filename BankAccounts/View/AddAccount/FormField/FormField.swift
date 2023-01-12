@@ -121,7 +121,7 @@ final class AddAccountFormField: UIView {
         }
     }
 
-    func setupDefault(value: String) {
+    func setupDefault(value: String = "") {
         fieldTitle.text = title
         fieldValue.text = value
     }

@@ -259,4 +259,16 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
             self.view.layoutIfNeeded()
         }
     }
+
+    func showCurrencyTableView() {
+        heightConstraint?.constant = 250
+        UIView.animate(withDuration: 0.5, delay: 0) {
+
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    func showPeriodTableView() {
+
+    }
 }

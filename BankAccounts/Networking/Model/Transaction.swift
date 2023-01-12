@@ -7,14 +7,13 @@
 
 import Foundation
 
-
-
 struct Transaction: Codable {
+    let date: String
     let bankName: String
     let iban: String
     let descritpion: String
-    let category: String
-    let amount: String
+    let category: Category
+    let amount: Double
     let currency: Currency
     let type: TransactionType
 

@@ -15,8 +15,8 @@ final class AllAccountsCoordinator: Coordinator {
         self.rootViewController = UINavigationController()
     }
 
-    func goToAllTransactions() {
-        let allTransactionsCoordinator = AllTransactionsCoordinator(rootViewController: rootViewController)
+    func goToAllTransactions(bankAccounts: [BankAccount]) {
+        let allTransactionsCoordinator = AllTransactionsCoordinator(rootViewController: rootViewController, bankAccounts: bankAccounts)
         allTransactionsCoordinator.start()
     }
 

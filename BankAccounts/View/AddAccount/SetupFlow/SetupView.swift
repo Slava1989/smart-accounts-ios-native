@@ -11,6 +11,8 @@ protocol SetupViewDelegate: AnyObject {
     func didTapClose()
     func showAccountTitleField()
     func showCurrencyFormField()
+    func showCurrencyTableView()
+    func showPeriodTableView()
 }
 
 final class SetupView: UIView, TableOptionsDelegate {
@@ -59,6 +61,7 @@ final class SetupView: UIView, TableOptionsDelegate {
 
     private lazy var accountTitleField: AddAccountFormField = {
         let formField = AddAccountFormField(frame: .zero, isExpandable: false, title: "Selecteaza contul")
+        formField.setupDefault()
         formField.isHidden = true
         formField.translatesAutoresizingMaskIntoConstraints = false
         return formField
@@ -75,8 +78,16 @@ final class SetupView: UIView, TableOptionsDelegate {
         return formField
     }()
 
-    private lazy var optionsView: TableOptions = {
-        let view = TableOptions(frame: .zero, options: ["30 zile", "60 zile", "90 zile"])
+    private lazy var periodOptionsView: TableOptions = {
+        let view = TableOptions(frame: .zero, options: ["30 zile", "60 zile", "90 zile"], type: .day)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
+        view.isHidden = true
+        return view
+    }()
+
+    private lazy var currencyOptionsView: TableOptions = {
+        let view = TableOptions(frame: .zero, options: ["RON", "EURO","USD"], type: .currency)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.delegate = self
         view.isHidden = true
@@ -162,18 +173,32 @@ final class SetupView: UIView, TableOptionsDelegate {
             sendButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15)
         ])
 
-        self.addSubview(optionsView)
+        self.addSubview(periodOptionsView)
         NSLayoutConstraint.activate([
-            optionsView.topAnchor.constraint(equalTo: selectTitleLabel.topAnchor, constant: 25),
-            optionsView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
-            optionsView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
-            optionsView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            periodOptionsView.topAnchor.constraint(equalTo: selectTitleLabel.topAnchor, constant: 25),
+            periodOptionsView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            periodOptionsView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            periodOptionsView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+
+        self.addSubview(currencyOptionsView)
+        NSLayoutConstraint.activate([
+            currencyOptionsView.topAnchor.constraint(equalTo: selectTitleLabel.topAnchor, constant: 25),
+            currencyOptionsView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            currencyOptionsView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            currencyOptionsView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 
-    func didSelect(option: String) {
-        hidePeriodTable()
-        periodFormField.setupValue(option: option)
+    func didSelect(option: String, type: OptionsType) {
+        hideTables()
+
+        switch type {
+        case .day:
+            periodFormField.setupValue(option: option)
+        case .currency:
+            currencyFormField.setupValue(option: option)
+        }
     }
 
     @objc private func closeDidTap() {
@@ -202,18 +227,32 @@ final class SetupView: UIView, TableOptionsDelegate {
     }
 
     @objc private func didTapCurrencyFormField() {
-
+        showOrHideCurrencyTable(isShown: false)
     }
 
-    private func hidePeriodTable() {
+    private func hideTables() {
         showOrHidePeriodTable(isShown: true)
+        showOrHideCurrencyTable(isShown: true)
+    }
+
+    private func showOrHideCurrencyTable(isShown: Bool) {
+        if !isShown {
+            delegate?.showCurrencyTableView()
+        }
+
+        bankTitleLabel.isHidden = !isShown
+        periodFormField.isHidden = !isShown
+        selectTitleLabel.isHidden = isShown
+        selectTitleLabel.text = "Selecteaza moneda"
+        currencyOptionsView.isHidden = isShown
     }
 
     private func showOrHidePeriodTable(isShown: Bool) {
         bankTitleLabel.isHidden = !isShown
         periodFormField.isHidden = !isShown
         selectTitleLabel.isHidden = isShown
+        selectTitleLabel.text = "Selecteaza perioada"
 
-        optionsView.isHidden = isShown
+        periodOptionsView.isHidden = isShown
     }
 }

@@ -8,11 +8,17 @@
 import UIKit
 
 protocol TableOptionsDelegate: AnyObject {
-    func didSelect(option: String)
+    func didSelect(option: String, type: OptionsType)
+}
+
+enum OptionsType {
+    case day
+    case currency
 }
 
 final class TableOptions: UIView, UITableViewDelegate, UITableViewDataSource {
     private var options: [String] = []
+    private var type: OptionsType = .day
 
     weak var delegate: TableOptionsDelegate?
 
@@ -38,9 +44,10 @@ final class TableOptions: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame)
     }
 
-    convenience init(frame: CGRect, options: [String]) {
+    convenience init(frame: CGRect, options: [String], type: OptionsType) {
         self.init(frame: frame)
         self.options = options
+        self.type = type
         self.backgroundColor = .white
         tableView.reloadData()
         setupUI()
@@ -67,11 +74,11 @@ final class TableOptions: UIView, UITableViewDelegate, UITableViewDataSource {
     }
 
     func didSelect(option: String) {
-        delegate?.didSelect(option: option)
+        delegate?.didSelect(option: option, type: type)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelect(option: options[indexPath.row])
+        delegate?.didSelect(option: options[indexPath.row], type: type)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

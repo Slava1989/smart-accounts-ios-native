@@ -55,6 +55,12 @@
 		BA67D4792955062E005B57C9 /* MainWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D4782955062E005B57C9 /* MainWidgetViewModel.swift */; };
 		BA67D47C295E4B2B005B57C9 /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D47B295E4B2B005B57C9 /* RedButton.swift */; };
 		BA67D47E295EDF3D005B57C9 /* RoundNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D47D295EDF3D005B57C9 /* RoundNumberView.swift */; };
+		BAC2C32A296F33B00095345F /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C329296F33B00095345F /* AllCell.swift */; };
+		BAC2C32D296F54CF0095345F /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C32C296F54CF0095345F /* UITextField+Ext.swift */; };
+		BAC2C32F296F58090095345F /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C32E296F58090095345F /* TransactionCell.swift */; };
+		BAC2C332296F59B80095345F /* NetworkTransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C331296F59B80095345F /* NetworkTransactionManager.swift */; };
+		BAC2C334296F684A0095345F /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C333296F684A0095345F /* Array+Ext.swift */; };
+		BAC2C336296F715B0095345F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C335296F715B0095345F /* String+Ext.swift */; };
 		F7C8421E63F43351EF1A7A34 /* Pods_BankAccounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9F3F575DA6751ECD85567E /* Pods_BankAccounts.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +124,12 @@
 		BA67D4782955062E005B57C9 /* MainWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWidgetViewModel.swift; sourceTree = "<group>"; };
 		BA67D47B295E4B2B005B57C9 /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
 		BA67D47D295EDF3D005B57C9 /* RoundNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundNumberView.swift; sourceTree = "<group>"; };
+		BAC2C329296F33B00095345F /* AllCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
+		BAC2C32C296F54CF0095345F /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		BAC2C32E296F58090095345F /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		BAC2C331296F59B80095345F /* NetworkTransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTransactionManager.swift; sourceTree = "<group>"; };
+		BAC2C333296F684A0095345F /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		BAC2C335296F715B0095345F /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		C40E7E36DBD4A613646642AF /* Pods_SmartAccount_Dashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartAccount_Dashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF465E8201666CFD4091F /* Pods-SmartAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartAccount.release.xcconfig"; path = "Target Support Files/Pods-SmartAccount/Pods-SmartAccount.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +188,7 @@
 		BA1F4DDA2962F45D00D8EB55 /* BankAccounts */ = {
 			isa = PBXGroup;
 			children = (
+				BAC2C32B296F54BA0095345F /* Helpers */,
 				BA20CEFC29633A8F00F3C93A /* Networking */,
 				BA20CEFB29633A7700F3C93A /* View */,
 				BA1F4DED296314CD00D8EB55 /* AppCoordinator.swift */,
@@ -212,8 +225,9 @@
 		BA20CEFC29633A8F00F3C93A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				BA20CF2D296CB15C00F3C93A /* NetworkBankList */,
 				BA20CF0029633C0400F3C93A /* Model */,
+				BAC2C330296F59A00095345F /* NetworkTransactionManager */,
+				BA20CF2D296CB15C00F3C93A /* NetworkBankList */,
 				BA20CEFD29633A9F00F3C93A /* NetworkAccountManager */,
 			);
 			path = Networking;
@@ -263,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				BA20CF182968662D00F3C93A /* CardCell.swift */,
+				BAC2C329296F33B00095345F /* AllCell.swift */,
+				BAC2C32E296F58090095345F /* TransactionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -399,6 +415,24 @@
 				BA67D47D295EDF3D005B57C9 /* RoundNumberView.swift */,
 			);
 			path = UIElements;
+			sourceTree = "<group>";
+		};
+		BAC2C32B296F54BA0095345F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2C32C296F54CF0095345F /* UITextField+Ext.swift */,
+				BAC2C333296F684A0095345F /* Array+Ext.swift */,
+				BAC2C335296F715B0095345F /* String+Ext.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BAC2C330296F59A00095345F /* NetworkTransactionManager */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2C331296F59B80095345F /* NetworkTransactionManager.swift */,
+			);
+			path = NetworkTransactionManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -629,12 +663,15 @@
 				BA20CEFF29633B4900F3C93A /* NetworkAccountManager.swift in Sources */,
 				BA20CF0929646DD700F3C93A /* TotalAmountCell.swift in Sources */,
 				BA1F4DF02963153800D8EB55 /* AllAccountsCoordinator.swift in Sources */,
+				BAC2C334296F684A0095345F /* Array+Ext.swift in Sources */,
 				BA1F4DF22963171500D8EB55 /* AllAccountsViewModel.swift in Sources */,
+				BAC2C32D296F54CF0095345F /* UITextField+Ext.swift in Sources */,
 				BA1F4DE02962F45D00D8EB55 /* AllAccountsViewController.swift in Sources */,
 				BA20CF31296CB23600F3C93A /* Bank.swift in Sources */,
 				BA20CF3A296CD5E100F3C93A /* SetupView.swift in Sources */,
 				BA20CF34296CC38B00F3C93A /* BankCell.swift in Sources */,
 				BA20CF192968662D00F3C93A /* CardCell.swift in Sources */,
+				BAC2C332296F59B80095345F /* NetworkTransactionManager.swift in Sources */,
 				BA20CF0B2964773800F3C93A /* AllTransactionsCell.swift in Sources */,
 				BA20CF2F296CB17700F3C93A /* NetworkBankManager.swift in Sources */,
 				BA20CF1629685A2E00F3C93A /* AllTransactionsViewController.swift in Sources */,
@@ -642,9 +679,12 @@
 				BA20CF1229683D9A00F3C93A /* AllTransactionsViewModel.swift in Sources */,
 				BA20CF0229633C0E00F3C93A /* BankAccount.swift in Sources */,
 				BA20CF43296DAF9E00F3C93A /* OptionCell.swift in Sources */,
+				BAC2C336296F715B0095345F /* String+Ext.swift in Sources */,
 				BA20CF0429633FEF00F3C93A /* NetworkError.swift in Sources */,
+				BAC2C32F296F58090095345F /* TransactionCell.swift in Sources */,
 				BA1F4DDC2962F45D00D8EB55 /* AppDelegate.swift in Sources */,
 				BA20CF37296CD51300F3C93A /* FormField.swift in Sources */,
+				BAC2C32A296F33B00095345F /* AllCell.swift in Sources */,
 				BA1F4DDE2962F45D00D8EB55 /* SceneDelegate.swift in Sources */,
 				BA20CF0729639AF400F3C93A /* BankAccountCell.swift in Sources */,
 				BA20CF10296838C800F3C93A /* AllTransactionsCoordinator.swift in Sources */,
