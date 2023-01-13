@@ -63,13 +63,33 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQv-N5-DFu">
+                                <rect key="frame" x="20" y="89" width="353" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ssss" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uGU-ec-O2J">
+                                        <rect key="frame" x="20" y="8" width="313" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="uGU-ec-O2J" firstAttribute="centerY" secondItem="YQv-N5-DFu" secondAttribute="centerY" id="1jJ-02-JTK"/>
+                                    <constraint firstAttribute="height" constant="50" id="KwP-HX-oHt"/>
+                                    <constraint firstAttribute="trailing" secondItem="uGU-ec-O2J" secondAttribute="trailing" constant="20" id="Vje-je-8VS"/>
+                                    <constraint firstItem="uGU-ec-O2J" firstAttribute="leading" secondItem="YQv-N5-DFu" secondAttribute="leading" constant="20" id="gpz-uM-6NI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="i9q-TY-f0H" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QUa-8f-PKh"/>
+                            <constraint firstItem="YQv-N5-DFu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="REO-Wt-rLu"/>
                             <constraint firstItem="i9q-TY-f0H" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Zdu-jH-skP"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i9q-TY-f0H" secondAttribute="trailing" constant="20" id="nMM-xm-A3P"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YQv-N5-DFu" secondAttribute="trailing" constant="20" id="tM0-Oy-w0N"/>
+                            <constraint firstItem="YQv-N5-DFu" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="xca-hw-D9G"/>
                         </constraints>
                     </view>
                 </viewController>

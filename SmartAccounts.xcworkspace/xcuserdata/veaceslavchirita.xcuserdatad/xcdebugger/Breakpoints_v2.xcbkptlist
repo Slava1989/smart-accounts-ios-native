@@ -471,22 +471,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A274D49A-9CE6-4B85-B31A-1448F04544D2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "A285C57A-1445-4BB4-A895-4F132A733028"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -494,8 +478,8 @@
             filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "getAllTransactions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +494,8 @@
             filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +510,8 @@
             filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -542,8 +526,8 @@
             filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "getAllTransactions()"
             landmarkType = "7">
          </BreakpointContent>
@@ -558,8 +542,8 @@
             filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "makeTransactionDictionary(transactions:)"
             landmarkType = "7">
             <Locations>
@@ -609,6 +593,102 @@
                   offsetFromSymbolStart = "285">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "493B17C6-4DF9-4404-A3B3-95FDB69329D3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "filterTransactions(by:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B79E73F-E42D-4697-823A-5C1FE215CB79"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BankAccounts/View/AllTransactions/AllTransactionsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "filterTransactions(by:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2B79E73F-E42D-4697-823A-5C1FE215CB79 - f351ef1967cd5517"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BankAccounts.AllTransactionsViewModel.filterTransactions(by: Swift.Optional&lt;BankAccounts.BankAccount&gt;) -&gt; ()"
+                  moduleName = "BankAccounts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/veaceslavchirita/Desktop/smart-accounts-ios-native/BankAccounts/View/AllTransactions/AllTransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  uuid = "2B79E73F-E42D-4697-823A-5C1FE215CB79 - f351ef1967cd5517"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BankAccounts.AllTransactionsViewModel.filterTransactions(by: Swift.Optional&lt;BankAccounts.BankAccount&gt;) -&gt; ()"
+                  moduleName = "BankAccounts"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/veaceslavchirita/Desktop/smart-accounts-ios-native/BankAccounts/View/AllTransactions/AllTransactionsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4DD8D996-122A-4703-B245-74F372314146"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BankAccounts/View/AllTransactions/BankAccountView/BankAccountView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91DF465B-3423-458D-A391-459A049BE216"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BankAccounts/View/AllTransactions/BankAccountView/BankAccountView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

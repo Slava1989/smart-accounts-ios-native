@@ -11,14 +11,14 @@ final class TransactionCell: UITableViewCell {
 
     private lazy var bankTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Bold", size: 17)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Bold", size: 17)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,7 +39,7 @@ final class TransactionCell: UITableViewCell {
 
     private lazy var bankIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -84,15 +84,15 @@ final class TransactionCell: UITableViewCell {
         contentView.addSubview(containerStackView)
         NSLayoutConstraint.activate([
             containerStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            containerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            containerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            containerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             containerStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
 
         containerStackView.addArrangedSubview(bankIcon)
         NSLayoutConstraint.activate([
-            bankIcon.widthAnchor.constraint(equalToConstant: 40),
-            bankIcon.heightAnchor.constraint(equalToConstant: 40)
+            bankIcon.widthAnchor.constraint(equalToConstant: 30),
+            bankIcon.heightAnchor.constraint(equalToConstant: 30)
         ])
 
         containerStackView.addArrangedSubview(descriptionStackView)
@@ -112,7 +112,7 @@ final class TransactionCell: UITableViewCell {
         descriptionLabel.text = transaction.descritpion
         accountNumber.text = transaction.iban
         transactionCategory.text = transaction.category.rawValue
-        bankIcon.image = UIImage(systemName: "creditcard.fill")
+        bankIcon.image = UIImage(named: transaction.icon)
 
         switch transaction.type {
         case .credit:

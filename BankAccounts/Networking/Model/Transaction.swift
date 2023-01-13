@@ -16,6 +16,7 @@ struct Transaction: Codable {
     let amount: Double
     let currency: Currency
     let type: TransactionType
+    let icon: String
 
     enum Category: String, Codable {
         case grocerry

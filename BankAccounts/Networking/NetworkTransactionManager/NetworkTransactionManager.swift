@@ -27,7 +27,8 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             ),
 
             Transaction(
@@ -38,7 +39,8 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             ),
 
             Transaction(
@@ -49,7 +51,8 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             ),
 
             Transaction(
@@ -60,7 +63,8 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             ),
 
             Transaction(
@@ -71,18 +75,20 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             ),
 
             Transaction(
                 date: "08/01/2023",
-                bankName: "BCR",
+                bankName: "Banca Transilvania",
                 iban: "RO65 BANK 0000 8888 2222 5555",
                 descritpion: "salary income",
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .credit
+                type: .credit,
+                icon: "bt"
             ),
 
             Transaction(
@@ -93,7 +99,8 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             ),
 
             Transaction(
@@ -104,7 +111,8 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
                 category: .grocerry,
                 amount: 1300,
                 currency: .RON,
-                type: .debit
+                type: .debit,
+                icon: "bcr"
             )
         ]
 

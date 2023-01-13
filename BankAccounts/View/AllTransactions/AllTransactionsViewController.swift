@@ -8,32 +8,32 @@
 import UIKit
 import Combine
 
-final class AllTransactionsViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+final class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BankAccountViewDelegate, SearchTextFieldDelegate {
 
     private var viewModel: AllTransactionsViewModelInput
     private var allTransactions: [ViewModelTransaction] = []
     private var bankAccounts: [BankAccount] = []
     private var cancellable = Set<AnyCancellable>()
 
-    private lazy var bankAccountsContainerView: UIView = {
-        let uiView = UIView()
+    private var tableViewLayoutConstraintHeight: NSLayoutConstraint?
+    private var tableViewTopLayoutConstraint: NSLayoutConstraint?
+
+    private lazy var bankAccountsContainerView: BankAccountView = {
+        let uiView = BankAccountView()
+        uiView.delegate = self
         uiView.translatesAutoresizingMaskIntoConstraints = false
         return uiView
     }()
 
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(CardCell.self, forCellWithReuseIdentifier: "cardCell")
-        collectionView.register(AllCell.self, forCellWithReuseIdentifier: "allCell")
-
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        return collectionView
+    private lazy var searchTextField: SearchTextField = {
+        let textField = SearchTextField()
+        textField.delegate = self
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.tintColor = .darkGray
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
 
     private lazy var transactionListLabel: UILabel = {
@@ -44,21 +44,12 @@ final class AllTransactionsViewController: UIViewController, UICollectionViewDel
         return label
     }()
 
-    private lazy var searchTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Cauta in tranzactii"
-        textField.borderStyle = .roundedRect
-        textField.leftViewMode = UITextField.ViewMode.always
-        textField.setLeftView(image: UIImage(systemName: "magnifyingglass")!)
-        textField.tintColor = .darkGray
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.register(TransactionCell.self, forCellReuseIdentifier: "transactionsCell")
@@ -82,7 +73,7 @@ final class AllTransactionsViewController: UIViewController, UICollectionViewDel
 
         view.backgroundColor = .white
         setupUI()
-        collectionView.reloadData()
+        bankAccountsContainerView.setupBankAccount(bankAccounts: bankAccounts)
         getAllTransactions()
     }
 
@@ -92,37 +83,31 @@ final class AllTransactionsViewController: UIViewController, UICollectionViewDel
             bankAccountsContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             bankAccountsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bankAccountsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bankAccountsContainerView.heightAnchor.constraint(equalToConstant: 300)
-        ])
-
-        bankAccountsContainerView.addSubview(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: bankAccountsContainerView.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: bankAccountsContainerView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: bankAccountsContainerView.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bankAccountsContainerView.bottomAnchor)
+            bankAccountsContainerView.heightAnchor.constraint(equalToConstant: 290)
         ])
 
         view.addSubview(transactionListLabel)
         NSLayoutConstraint.activate([
-            transactionListLabel.topAnchor.constraint(equalTo: bankAccountsContainerView.bottomAnchor, constant: 25),
+            transactionListLabel.topAnchor.constraint(equalTo: bankAccountsContainerView.bottomAnchor, constant: 10),
             transactionListLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30)
         ])
 
         view.addSubview(searchTextField)
         NSLayoutConstraint.activate([
-            searchTextField.topAnchor.constraint(equalTo: transactionListLabel.bottomAnchor, constant: 30),
+            searchTextField.topAnchor.constraint(equalTo: transactionListLabel.bottomAnchor, constant: 10),
             searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            searchTextField.heightAnchor.constraint(equalToConstant: 45)
+            searchTextField.heightAnchor.constraint(equalToConstant: 37)
         ])
 
         view.addSubview(tableView)
+        tableViewTopLayoutConstraint = tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (view.frame.height / 3) + view.frame.height / 8)
+        tableViewTopLayoutConstraint?.isActive = true
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
         ])
     }
 
@@ -133,52 +118,14 @@ final class AllTransactionsViewController: UIViewController, UICollectionViewDel
             self?.allTransactions = transactions
             self?.tableView.reloadData()
         }.store(in: &cancellable)
-
     }
 
-    //MARK: UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        viewModel.getTransactions(cardId: indexPath.row)
+    func didChaneText(text: String) {
+        viewModel.didChangeSearchText(searchText: text)
     }
 
-    //MARK: UICollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bankAccounts.count + 1
-
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allCell", for: indexPath) as? AllCell else { return UICollectionViewCell() }
-
-            return cell
-        }
-
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else { return UICollectionViewCell() }
-
-        let bankAccount = bankAccounts[indexPath.row - 1]
-        cell.configureCell(bankAccount: bankAccount)
-        return cell
-    }
-
-    //MARK: UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        if indexPath.row == 0 {
-            return CGSize(width: 270, height: 250)
-        }
-
-        return CGSize(width: 350, height: 250)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-
-
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 30
+    func didSelect(bankAccount: BankAccount?) {
+        viewModel.filterTransactions(by: bankAccount)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -227,11 +174,6 @@ final class AllTransactionsViewController: UIViewController, UICollectionViewDel
         }
     }
 
-    //    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-    //        (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-    //        (view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.white
-    //    }
-
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
@@ -249,5 +191,22 @@ final class AllTransactionsViewController: UIViewController, UICollectionViewDel
         cell.config(transaction: transactions[indexPath.row])
 
         return cell
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            tableViewTopLayoutConstraint?.constant = (view.frame.height / 3) + view.frame.height / 8
+
+            UIView.animate(withDuration: 0.5, delay: 0) {
+                self.view.layoutIfNeeded()
+            }
+
+        } else if scrollView.contentOffset.y > 0 {
+            tableViewTopLayoutConstraint?.constant = 0
+
+            UIView.animate(withDuration: 0.5, delay: 0) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }

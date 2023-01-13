@@ -61,6 +61,8 @@
 		BAC2C332296F59B80095345F /* NetworkTransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C331296F59B80095345F /* NetworkTransactionManager.swift */; };
 		BAC2C334296F684A0095345F /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C333296F684A0095345F /* Array+Ext.swift */; };
 		BAC2C336296F715B0095345F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C335296F715B0095345F /* String+Ext.swift */; };
+		BAC2C339297006100095345F /* BankAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C338297006100095345F /* BankAccountView.swift */; };
+		BAC2C33C2970C79C0095345F /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C33B2970C79B0095345F /* SearchTextField.swift */; };
 		F7C8421E63F43351EF1A7A34 /* Pods_BankAccounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9F3F575DA6751ECD85567E /* Pods_BankAccounts.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +132,8 @@
 		BAC2C331296F59B80095345F /* NetworkTransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTransactionManager.swift; sourceTree = "<group>"; };
 		BAC2C333296F684A0095345F /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		BAC2C335296F715B0095345F /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		BAC2C338297006100095345F /* BankAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountView.swift; sourceTree = "<group>"; };
+		BAC2C33B2970C79B0095345F /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		C40E7E36DBD4A613646642AF /* Pods_SmartAccount_Dashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartAccount_Dashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF465E8201666CFD4091F /* Pods-SmartAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartAccount.release.xcconfig"; path = "Target Support Files/Pods-SmartAccount/Pods-SmartAccount.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,6 +269,8 @@
 		BA20CF0E296837CB00F3C93A /* AllTransactions */ = {
 			isa = PBXGroup;
 			children = (
+				BAC2C33A2970C7840095345F /* SearchTextField */,
+				BAC2C337297005EC0095345F /* BankAccountView */,
 				BA20CF172968662100F3C93A /* Cell */,
 				BA20CF0F296838C800F3C93A /* AllTransactionsCoordinator.swift */,
 				BA20CF1129683D9A00F3C93A /* AllTransactionsViewModel.swift */,
@@ -433,6 +439,22 @@
 				BAC2C331296F59B80095345F /* NetworkTransactionManager.swift */,
 			);
 			path = NetworkTransactionManager;
+			sourceTree = "<group>";
+		};
+		BAC2C337297005EC0095345F /* BankAccountView */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2C338297006100095345F /* BankAccountView.swift */,
+			);
+			path = BankAccountView;
+			sourceTree = "<group>";
+		};
+		BAC2C33A2970C7840095345F /* SearchTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2C33B2970C79B0095345F /* SearchTextField.swift */,
+			);
+			path = SearchTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -683,11 +705,13 @@
 				BA20CF0429633FEF00F3C93A /* NetworkError.swift in Sources */,
 				BAC2C32F296F58090095345F /* TransactionCell.swift in Sources */,
 				BA1F4DDC2962F45D00D8EB55 /* AppDelegate.swift in Sources */,
+				BAC2C33C2970C79C0095345F /* SearchTextField.swift in Sources */,
 				BA20CF37296CD51300F3C93A /* FormField.swift in Sources */,
 				BAC2C32A296F33B00095345F /* AllCell.swift in Sources */,
 				BA1F4DDE2962F45D00D8EB55 /* SceneDelegate.swift in Sources */,
 				BA20CF0729639AF400F3C93A /* BankAccountCell.swift in Sources */,
 				BA20CF10296838C800F3C93A /* AllTransactionsCoordinator.swift in Sources */,
+				BAC2C339297006100095345F /* BankAccountView.swift in Sources */,
 				BA20CF40296DADE700F3C93A /* TableOptions.swift in Sources */,
 				BA20CF2A296C629800F3C93A /* AddAccountViewController.swift in Sources */,
 				BA20CF1429683EF400F3C93A /* Transaction.swift in Sources */,

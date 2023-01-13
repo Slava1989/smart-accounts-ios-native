@@ -11,8 +11,9 @@ import Combine
 protocol AllTransactionsViewModelInput: AnyObject {
     var subject: CurrentValueSubject<[ViewModelTransaction], Error>{ get set }
 
+    func didChangeSearchText(searchText: String)
     func checkDate(date: Date) -> String
-    func filterTransactions()
+    func filterTransactions(by bankAccount: BankAccount?)
 }
 
 class ViewModelTransaction {
@@ -28,6 +29,7 @@ class ViewModelTransaction {
 final class AllTransactionsViewModel: AllTransactionsViewModelInput {
     private var coordinator: AllTransactionsCoordinator
     private var allTransactions: [Transaction]?
+    private var modeledTransactions: [ViewModelTransaction] = []
 
     var subject = CurrentValueSubject<[ViewModelTransaction], Error>([])
 
@@ -38,9 +40,11 @@ final class AllTransactionsViewModel: AllTransactionsViewModelInput {
 
     private func getAllTransactions() {
         NetworkTransactionManager.shared.fetchTransactions { [weak self] transactions, error in
+            guard let self = self else { return }
+
             if error == nil {
-                let transactionDictionary = self?.makeTransactionDictionary(transactions: transactions)
-                self?.subject.send(transactionDictionary ?? [])
+                self.modeledTransactions = self.makeTransactionDictionary(transactions: transactions)
+                self.subject.send(self.modeledTransactions)
             }
         }
     }
@@ -73,7 +77,36 @@ final class AllTransactionsViewModel: AllTransactionsViewModelInput {
         return ""
     }
 
-    func filterTransactions() {
+    func didChangeSearchText(searchText: String) {
+        guard !searchText.isEmpty else {
+            subject.send(modeledTransactions)
+            return
+        }
 
+        let filteredTransactions = modeledTransactions.filter { transactionsArray in
+            transactionsArray.transactions.contains { transaction in
+                let searchTextLowerCased = searchText.lowercased()
+                return transaction.bankName.lowercased().contains(searchTextLowerCased) ||
+                transaction.descritpion.lowercased().contains(searchTextLowerCased) ||
+                transaction.category.rawValue.lowercased().contains(searchTextLowerCased)
+            }
+        }
+
+        subject.send(filteredTransactions)
+    }
+
+    func filterTransactions(by bankAccount: BankAccount?) {
+        guard let bankAccount = bankAccount else {
+            subject.send(modeledTransactions)
+            return
+        }
+
+        let filteredTransactions = modeledTransactions.filter { transactionsArray in
+            transactionsArray.transactions.contains { transaction in
+                return transaction.bankName.lowercased().contains(bankAccount.bankName.lowercased())
+            }
+        }
+
+        subject.send(filteredTransactions)
     }
 }
