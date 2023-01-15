@@ -8,8 +8,9 @@
 import UIKit
 import Combine
 
-final class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BankAccountViewDelegate, SearchTextFieldDelegate {
+final class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BankAccountViewDelegate, SearchTextFieldDelegate, FilterViewDelegate {
 
+    private var heightConstraint: NSLayoutConstraint?
     private var viewModel: AllTransactionsViewModelInput
     private var allTransactions: [ViewModelTransaction] = []
     private var bankAccounts: [BankAccount] = []
@@ -17,6 +18,12 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
 
     private var tableViewLayoutConstraintHeight: NSLayoutConstraint?
     private var tableViewTopLayoutConstraint: NSLayoutConstraint?
+
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var bankAccountsContainerView: BankAccountView = {
         let uiView = BankAccountView()
@@ -57,6 +64,14 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
         return tableView
     }()
 
+    private lazy var filterView: FilterView = {
+        let filterView = FilterView(frame: .zero)
+        filterView.isHidden = true
+        filterView.delegate = self
+        filterView.translatesAutoresizingMaskIntoConstraints = false
+        return filterView
+    }()
+
     init(viewModel: AllTransactionsViewModelInput, bankAccounts: [BankAccount]) {
         self.viewModel = viewModel
         self.bankAccounts = bankAccounts
@@ -78,36 +93,52 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
     }
 
     private func setupUI() {
-        view.addSubview(bankAccountsContainerView)
+        view.addSubview(containerView)
         NSLayoutConstraint.activate([
-            bankAccountsContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            bankAccountsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bankAccountsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+
+        containerView.addSubview(bankAccountsContainerView)
+        NSLayoutConstraint.activate([
+            bankAccountsContainerView.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            bankAccountsContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            bankAccountsContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             bankAccountsContainerView.heightAnchor.constraint(equalToConstant: 290)
         ])
 
-        view.addSubview(transactionListLabel)
+        containerView.addSubview(transactionListLabel)
         NSLayoutConstraint.activate([
             transactionListLabel.topAnchor.constraint(equalTo: bankAccountsContainerView.bottomAnchor, constant: 10),
-            transactionListLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30)
+            transactionListLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30)
         ])
 
-        view.addSubview(searchTextField)
+        containerView.addSubview(searchTextField)
         NSLayoutConstraint.activate([
             searchTextField.topAnchor.constraint(equalTo: transactionListLabel.bottomAnchor, constant: 10),
-            searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            searchTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            searchTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             searchTextField.heightAnchor.constraint(equalToConstant: 37)
         ])
 
-        view.addSubview(tableView)
-        tableViewTopLayoutConstraint = tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (view.frame.height / 3) + view.frame.height / 8)
+        containerView.addSubview(tableView)
+        tableViewTopLayoutConstraint = tableView.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: (view.frame.height / 3) + view.frame.height / 8)
         tableViewTopLayoutConstraint?.isActive = true
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor)
+        ])
 
+        view.addSubview(filterView)
+        heightConstraint = filterView.heightAnchor.constraint(equalToConstant: 450)
+        heightConstraint?.isActive = true
+        NSLayoutConstraint.activate([
+            filterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            filterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            filterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 
@@ -120,8 +151,36 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
         }.store(in: &cancellable)
     }
 
+    private func showFilterView() {
+        filterView.isHidden = false
+        bankAccountsContainerView.backgroundColor = .black
+        bankAccountsContainerView.alpha = 0.3
+        containerView.alpha = 0.4
+        containerView.backgroundColor = .lightGray
+    }
+
     func didChaneText(text: String) {
         viewModel.didChangeSearchText(searchText: text)
+    }
+
+    func didTapFilter() {
+        showFilterView()
+    }
+
+    func didTapCloseButton() {
+        filterView.isHidden = true
+    }
+
+    func didTapBankSelect() {
+        heightConstraint?.constant = view.safeAreaLayoutGuide.layoutFrame.height
+    }
+
+    func didSelectBankName() {
+        heightConstraint?.constant = 420
+    }
+
+    func didTapApply(bankName: String, accountNumber: String, fromDatae: String, toDate: String) {
+        
     }
 
     func didSelect(bankAccount: BankAccount?) {

@@ -3,20 +3,24 @@ PODS:
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
+  - IQKeyboardManagerSwift (6.5.10)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
   - Charts
+  - IQKeyboardManagerSwift
 
 SPEC REPOS:
   trunk:
     - Charts
+    - IQKeyboardManagerSwift
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
   Charts: 354f86803d11d9c35de280587fef50d1af063978
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 1c9341281eeadb4752e86dc2a68fb0601aeaecd2
+PODFILE CHECKSUM: 19a2ae032a3e8d8f132c6e6aebe0909d969186d6
 
 COCOAPODS: 1.11.3

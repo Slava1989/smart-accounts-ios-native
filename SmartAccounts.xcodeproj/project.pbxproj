@@ -63,6 +63,8 @@
 		BAC2C336296F715B0095345F /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C335296F715B0095345F /* String+Ext.swift */; };
 		BAC2C339297006100095345F /* BankAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C338297006100095345F /* BankAccountView.swift */; };
 		BAC2C33C2970C79C0095345F /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C33B2970C79B0095345F /* SearchTextField.swift */; };
+		BAC2C33F297157F40095345F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C33E297157F40095345F /* FilterView.swift */; };
+		BAC2C341297158040095345F /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC2C340297158040095345F /* FilterView.xib */; };
 		F7C8421E63F43351EF1A7A34 /* Pods_BankAccounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9F3F575DA6751ECD85567E /* Pods_BankAccounts.framework */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +136,8 @@
 		BAC2C335296F715B0095345F /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		BAC2C338297006100095345F /* BankAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountView.swift; sourceTree = "<group>"; };
 		BAC2C33B2970C79B0095345F /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		BAC2C33E297157F40095345F /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		BAC2C340297158040095345F /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		C40E7E36DBD4A613646642AF /* Pods_SmartAccount_Dashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartAccount_Dashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF465E8201666CFD4091F /* Pods-SmartAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartAccount.release.xcconfig"; path = "Target Support Files/Pods-SmartAccount/Pods-SmartAccount.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,6 +273,7 @@
 		BA20CF0E296837CB00F3C93A /* AllTransactions */ = {
 			isa = PBXGroup;
 			children = (
+				BAC2C33D297157DC0095345F /* FilterView */,
 				BAC2C33A2970C7840095345F /* SearchTextField */,
 				BAC2C337297005EC0095345F /* BankAccountView */,
 				BA20CF172968662100F3C93A /* Cell */,
@@ -457,6 +462,15 @@
 			path = SearchTextField;
 			sourceTree = "<group>";
 		};
+		BAC2C33D297157DC0095345F /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				BAC2C33E297157F40095345F /* FilterView.swift */,
+				BAC2C340297158040095345F /* FilterView.xib */,
+			);
+			path = FilterView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -561,6 +575,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC2C341297158040095345F /* FilterView.xib in Resources */,
 				BA1F4DE82962F46100D8EB55 /* LaunchScreen.storyboard in Resources */,
 				BA1F4DE52962F46100D8EB55 /* Assets.xcassets in Resources */,
 				BA20CF3C296D844C00F3C93A /* Storyboard.storyboard in Resources */,
@@ -684,6 +699,7 @@
 				BA1F4DEE296314CD00D8EB55 /* AppCoordinator.swift in Sources */,
 				BA20CEFF29633B4900F3C93A /* NetworkAccountManager.swift in Sources */,
 				BA20CF0929646DD700F3C93A /* TotalAmountCell.swift in Sources */,
+				BAC2C33F297157F40095345F /* FilterView.swift in Sources */,
 				BA1F4DF02963153800D8EB55 /* AllAccountsCoordinator.swift in Sources */,
 				BAC2C334296F684A0095345F /* Array+Ext.swift in Sources */,
 				BA1F4DF22963171500D8EB55 /* AllAccountsViewModel.swift in Sources */,

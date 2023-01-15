@@ -8,6 +8,7 @@ target 'BankAccounts' do
   # Pods for BankAccounts
 
   pod 'Charts'
+  pod 'IQKeyboardManagerSwift'
 
 end
 

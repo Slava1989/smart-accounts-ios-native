@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchTextFieldDelegate: AnyObject {
     func didChaneText(text: String)
+    func didTapFilter()
 }
 
 final class SearchTextField: UIView {
@@ -56,7 +57,7 @@ final class SearchTextField: UIView {
     }
 
     @objc private func didTapFilter() {
-        print("filter")
+        delegate?.didTapFilter()
     }
 
     @objc private func didChaneText(textField: UITextField) {
