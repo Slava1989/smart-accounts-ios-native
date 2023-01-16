@@ -61,6 +61,7 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
 
     private lazy var errorView: ErrorView = {
         let view = ErrorView()
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -136,6 +137,14 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
             searchTextField.heightAnchor.constraint(equalToConstant: 37)
         ])
 
+        view.addSubview(errorView)
+        NSLayoutConstraint.activate([
+            errorView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.heightAnchor.constraint(equalToConstant: 250)
+        ])
+
         containerView.addSubview(tableView)
         tableViewTopLayoutConstraint = tableView.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: (view.frame.height / 3) + view.frame.height / 8)
         tableViewTopLayoutConstraint?.isActive = true
@@ -207,6 +216,13 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
 
     func didSelect(bankAccount: BankAccount?) {
         viewModel.filterTransactions(by: bankAccount)
+        errorView.isHidden = true
+        tableView.isHidden = false
+    }
+
+    func didSelectError() {
+        errorView.isHidden = false
+        tableView.isHidden = true
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

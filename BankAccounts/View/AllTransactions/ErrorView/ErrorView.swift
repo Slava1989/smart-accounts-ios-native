@@ -8,6 +8,7 @@
 import UIKit
 
 class ErrorView: UIView {
+    private var attempts = 0
     @IBOutlet var contentView: UIView!
 
     @IBOutlet weak var retryButton: UIButton!
@@ -30,4 +31,10 @@ class ErrorView: UIView {
         retryButton.layer.cornerRadius = 10
     }
 
+    @IBAction func didTapRetry(_ sender: UIButton) {
+        attempts += 1
+        if attempts == 2 {
+            retryButton.isHidden = true
+        }
+    }
 }

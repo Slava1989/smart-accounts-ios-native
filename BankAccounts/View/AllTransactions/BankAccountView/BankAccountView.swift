@@ -9,6 +9,7 @@ import UIKit
 
 protocol BankAccountViewDelegate: AnyObject {
     func didSelect(bankAccount: BankAccount?)
+    func didSelectError()
 }
 
 final class BankAccountView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -58,6 +59,11 @@ final class BankAccountView: UIView, UICollectionViewDelegateFlowLayout, UIColle
 
     //MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            delegate?.didSelectError()
+            return
+        }
+
         let bankAccount = indexPath.row > 0 ? bankAccounts[indexPath.row - 1] : nil
         delegate?.didSelect(bankAccount: bankAccount)
     }
