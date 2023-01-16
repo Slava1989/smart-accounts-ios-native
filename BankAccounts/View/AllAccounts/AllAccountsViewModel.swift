@@ -48,7 +48,12 @@ final class AllAccountsViewModel: AccountsViewModelInput {
             }
 
             let entries = bankAccounts.map { bankAccount -> PieChartDataEntry in
-                let percentValue = bankAccount.amount / self.totalAmount * 100
+                if bankAccount.currency.rawValue != "RON" {
+                    let percentValue = (bankAccount.amount * 20.24 / self.totalAmount) * 100
+                    return PieChartDataEntry(value: percentValue, label: bankAccount.bankNameShort)
+
+                }
+                let percentValue = (bankAccount.amount / self.totalAmount) * 100
                 return PieChartDataEntry(value: percentValue, label: bankAccount.bankNameShort)
             }
 
@@ -71,7 +76,7 @@ final class AllAccountsViewModel: AccountsViewModelInput {
     }
 
     private func setupTimer() {
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateAccounts), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(updateAccounts), userInfo: nil, repeats: true)
     }
 
     @objc private func updateAccounts() {

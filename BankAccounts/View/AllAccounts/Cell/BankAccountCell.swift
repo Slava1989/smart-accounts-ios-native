@@ -40,6 +40,7 @@ final class BankAccountCell: UITableViewCell {
 
     private lazy var warningStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.spacing = 3
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
