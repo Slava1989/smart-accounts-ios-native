@@ -11,7 +11,12 @@ enum Currency: String, Codable {
     case RON = "RON"
     case USD = "USD"
     case EUR = "EUR"
+}
 
+enum LoadStatus: Int, Codable {
+    case finished
+    case notloaded
+    case error
 }
 
 struct BankAccount: Codable {
@@ -22,6 +27,7 @@ struct BankAccount: Codable {
     let iban: String
     let color: String
     let card: Card
+    var loadStatus: LoadStatus
 }
 
 struct Card: Codable {

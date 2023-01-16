@@ -19,7 +19,7 @@ class NetworkAccountManager: ServiceAPIProtocol {
         let bankAccountMock = [
             BankAccount(
                 bankName: "BRD",
-                amount: 236.00,
+                amount: 1036.00,
                 currency: .RON,
                 bankNameShort: "BRD",
                 iban: "12345678909876543",
@@ -28,12 +28,13 @@ class NetworkAccountManager: ServiceAPIProtocol {
                     name: "Popescu Ion",
                     acountNumber: "RO99 BCRE 0000 9999 0000 9999",
                     balance: 2500,
-                    currency: .EUR)
+                    currency: .EUR),
+                loadStatus: .notloaded
             ),
 
             BankAccount(
                 bankName: "ING",
-                amount: 6342.28,
+                amount: 342.28,
                 currency: .EUR,
                 bankNameShort: "ING",
                 iban: "12347890987654321",
@@ -42,12 +43,13 @@ class NetworkAccountManager: ServiceAPIProtocol {
                     name: "Popescu Ion",
                     acountNumber: "RO99 BCRE 0000 9999 0000 9999",
                     balance: 2500,
-                    currency: .EUR)
+                    currency: .EUR),
+                loadStatus: .notloaded
             ),
 
             BankAccount(
                 bankName: "BCR",
-                amount: 90.00,
+                amount: 900.00,
                 currency: .RON,
                 bankNameShort: "BCR",
                 iban: "12347890987654321",
@@ -56,12 +58,13 @@ class NetworkAccountManager: ServiceAPIProtocol {
                     name: "Popescu Ion",
                     acountNumber: "RO99 BCRE 0000 9999 0000 9999",
                     balance: 2500,
-                    currency: .EUR)
+                    currency: .EUR),
+                loadStatus: .notloaded
             ),
 
             BankAccount(
                 bankName: "Banca Transilvania",
-                amount: 12.50,
+                amount: 520.50,
                 currency: .RON,
                 bankNameShort: "BT",
                 iban: "12347890987654321",
@@ -70,7 +73,8 @@ class NetworkAccountManager: ServiceAPIProtocol {
                     name: "Popescu Ion",
                     acountNumber: "RO99 BCRE 0000 9999 0000 9999",
                     balance: 2500,
-                    currency: .EUR)
+                    currency: .EUR),
+                loadStatus: .notloaded
             )
         ]
 

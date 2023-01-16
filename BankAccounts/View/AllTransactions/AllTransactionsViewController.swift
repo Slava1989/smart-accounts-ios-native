@@ -59,7 +59,11 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
         return label
     }()
 
-//    private lazy var filtersContainer
+    private lazy var errorView: ErrorView = {
+        let view = ErrorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)

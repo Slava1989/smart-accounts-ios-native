@@ -27,6 +27,8 @@ final class AllAccountsViewModel: AccountsViewModelInput {
 
     init(coordinator: AllAccountsCoordinator) {
         self.coordinator = coordinator
+
+        setupTimer()
     }
 
     func setupChart(completed: @escaping (PieChartData) -> Void) {
@@ -35,14 +37,16 @@ final class AllAccountsViewModel: AccountsViewModelInput {
 
             self.bankAccounts = bankAccounts
 
-            bankAccounts.reduce(0.0) { partialResult, bankAccount in
-                partialResult += bankAccount.amount
+            self.totalAmount = bankAccounts.map { bankAccount in
+                if bankAccount.currency.rawValue != "RON" {
+                    return bankAccount.amount * 20.24
+                }
+
+                return bankAccount.amount
+            }.reduce(into: 0.0) { partialResult, amount in
+                partialResult += amount
             }
 
-            bankAccounts.reduce(0.0) { partialResult, bankAccount in
-                return partialResult += bankAccount.amount
-            }
-            self.totalAmount = bankAccounts.reduce(0.0) { $0 + $1.amount }
             let entries = bankAccounts.map { bankAccount -> PieChartDataEntry in
                 let percentValue = bankAccount.amount / self.totalAmount * 100
                 return PieChartDataEntry(value: percentValue, label: bankAccount.bankNameShort)
@@ -64,6 +68,15 @@ final class AllAccountsViewModel: AccountsViewModelInput {
 
     func didTapAddAccount() {
         coordinator.goToAddAccount()
+    }
+
+    private func setupTimer() {
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateAccounts), userInfo: nil, repeats: true)
+    }
+
+    @objc private func updateAccounts() {
+        bankAccounts?[2].loadStatus = .error
+        subject.send(bankAccounts ?? [])
     }
 
     private func fetchBankAccounts(completed: @escaping ([BankAccount]) -> Void) {

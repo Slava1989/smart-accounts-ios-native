@@ -18,6 +18,7 @@ final class TransactionCell: UITableViewCell {
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -46,7 +47,7 @@ final class TransactionCell: UITableViewCell {
 
     private lazy var amountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Helvetica-Bold", size: 17)
+        label.font = UIFont(name: "Helvetica-Bold", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

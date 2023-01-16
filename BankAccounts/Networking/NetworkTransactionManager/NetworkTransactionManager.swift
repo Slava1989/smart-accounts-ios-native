@@ -20,6 +20,42 @@ class NetworkTransactionManager: TransactionServiceAPIProtocol {
     func fetchTransactions(completed: @escaping ([Transaction], NetworkError?) -> Void) {
         let transactionsMock = [
             Transaction(
+                date: "16/01/2023",
+                bankName: "BRD",
+                iban: "RO65 BANK 0000 8888 2222 5555",
+                descritpion: "shop haine pentru toti",
+                category: .clothes,
+                amount: 1300,
+                currency: .RON,
+                type: .debit,
+                icon: "brd"
+            ),
+
+            Transaction(
+                date: "16/01/2023",
+                bankName: "BRD",
+                iban: "RO65 BANK 0000 8888 2222 5555",
+                descritpion: "shop haine pentru toti",
+                category: .clothes,
+                amount: 2700,
+                currency: .RON,
+                type: .debit,
+                icon: "brd"
+            ),
+
+            Transaction(
+                date: "15/01/2023",
+                bankName: "BRD",
+                iban: "RO65 BANK 0000 8888 2222 5555",
+                descritpion: "shop haine pentru toti",
+                category: .clothes,
+                amount: 1300,
+                currency: .RON,
+                type: .debit,
+                icon: "brd"
+            ),
+
+            Transaction(
                 date: "12/01/2023",
                 bankName: "BCR",
                 iban: "RO65 BANK 0000 8888 2222 5555",

@@ -82,6 +82,22 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
         return button
     }()
 
+    private lazy var informationView: InformationView = {
+        let informationView = InformationView()
+        informationView.backgroundColor = .white
+        informationView.layer.shadowColor = UIColor.black.cgColor
+        informationView.layer.shadowOpacity = 0.6
+        informationView.layer.shadowOffset = .zero
+        informationView.layer.shadowRadius = 1
+        informationView.layer.cornerRadius = 7
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapInformationView))
+        informationView.addGestureRecognizer(tapGesture)
+        informationView.isUserInteractionEnabled = true
+        informationView.translatesAutoresizingMaskIntoConstraints = false
+        return informationView
+    }()
+
     init(viewModel: AccountsViewModelInput) {
         self.viewModel = viewModel
 
@@ -121,6 +137,10 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
         viewModel.didTapAddAccount()
     }
 
+    @objc private func didTapInformationView() {
+        informationView.isHidden = true
+    }
+
     private func setupUI() {
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
@@ -128,6 +148,14 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
+        view.addSubview(informationView)
+        NSLayoutConstraint.activate([
+            informationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            informationView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            informationView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            informationView.heightAnchor.constraint(equalToConstant: 110)
         ])
 
         scrollView.addSubview(contentView)
@@ -194,7 +222,7 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row < bankAccounts.count {
-            if bankAccounts[indexPath.row].currency.rawValue != "RON" {
+            if bankAccounts[indexPath.row].currency.rawValue != "RON" || bankAccounts[indexPath.row].loadStatus == .error {
                 return 120
             }
         }
@@ -224,8 +252,6 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
 //            viewModel.updatePieCahrt
         }
     }
-
-
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRows = bankAccounts.count + 2

@@ -38,6 +38,21 @@ final class BankAccountCell: UITableViewCell {
         return label
     }()
 
+    private lazy var warningStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    private lazy var warningIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.isHidden = true
+        icon.image = UIImage(systemName: "exclamationmark.triangle.fill")
+        icon.tintColor = .red
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        return icon
+    }()
+
     private lazy var disclaimerLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
@@ -74,7 +89,14 @@ final class BankAccountCell: UITableViewCell {
         ])
 
         amountStackView.addArrangedSubview(amountLabel)
-        amountStackView.addArrangedSubview(disclaimerLabel)
+        amountStackView.addArrangedSubview(warningStackView)
+        warningStackView.addArrangedSubview(disclaimerLabel)
+        warningStackView.addArrangedSubview(warningIcon)
+
+        NSLayoutConstraint.activate([
+            warningIcon.widthAnchor.constraint(equalToConstant: 15),
+            warningIcon.heightAnchor.constraint(equalToConstant: 15)
+        ])
 
         self.addSubview(amountStackView)
         NSLayoutConstraint.activate([
@@ -87,9 +109,21 @@ final class BankAccountCell: UITableViewCell {
         circleView.backgroundColor = UIColor(named: bankAccount.color)
         titleLabel.text = bankAccount.bankNameShort
         disclaimerLabel.isHidden = true
+        warningIcon.isHidden = true
+        amountLabel.isHidden = false
+
+        if bankAccount.loadStatus == .error {
+            disclaimerLabel.isHidden = false
+            warningIcon.isHidden = false
+            amountLabel.isHidden = true
+            disclaimerLabel.text = "No available balance for this bank"
+
+            return
+        }
 
         if bankAccount.currency.rawValue != "RON" {
             disclaimerLabel.isHidden = false
+            disclaimerLabel.text = "Suma totala estimativa in RON"
             amountLabel.text = (20.24 * bankAccount.amount).formatted(.currency(code:"RON")
                                         .locale(Locale(identifier: "fr-FR")))
             return

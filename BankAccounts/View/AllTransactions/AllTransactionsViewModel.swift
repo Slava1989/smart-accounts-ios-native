@@ -76,7 +76,7 @@ final class AllTransactionsViewModel: AllTransactionsViewModelInput {
             transactionsArray.transactions.contains { transaction in
                 let transactionDate = transaction.date.toDate() ?? Date()
 
-                return transaction.bankName.lowercased().contains(bankName.lowercased()) &&
+                return bankName.lowercased().contains(transaction.bankName.lowercased()) &&
                 transactionDate.isBetween(from, and: to)
             }
         }
