@@ -12,6 +12,7 @@ protocol AddAccountViewModelInput: AnyObject {
     var subject: CurrentValueSubject<[Bank], Error>{ get set }
 
     func fetchBanks()
+    func goToWebPage(bankURL: String)
 }
 
 final class AddAccountViewModel: AddAccountViewModelInput {
@@ -28,5 +29,9 @@ final class AddAccountViewModel: AddAccountViewModelInput {
         NetworkBankManager.shared.fetchBanks { [weak self] bank, error in
             self?.subject.send(bank)
         }
+    }
+
+    func goToWebPage(bankURL: String) {
+        coordinator.goToWebPage(bankURL: bankURL)
     }
 }

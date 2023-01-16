@@ -8,6 +8,13 @@
 import UIKit
 import Combine
 
+struct TransactionFilter {
+    let bankName: String
+    let accountNumber: String
+    let fromDate: String
+    let toDate: String
+}
+
 final class AllTransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BankAccountViewDelegate, SearchTextFieldDelegate, FilterViewDelegate {
 
     private var heightConstraint: NSLayoutConstraint?
@@ -15,6 +22,7 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
     private var allTransactions: [ViewModelTransaction] = []
     private var bankAccounts: [BankAccount] = []
     private var cancellable = Set<AnyCancellable>()
+    private var filterComponents: TransactionFilter?
 
     private var tableViewLayoutConstraintHeight: NSLayoutConstraint?
     private var tableViewTopLayoutConstraint: NSLayoutConstraint?
@@ -51,6 +59,7 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
         return label
     }()
 
+//    private lazy var filtersContainer
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -180,7 +189,16 @@ final class AllTransactionsViewController: UIViewController, UITableViewDelegate
     }
 
     func didTapApply(bankName: String, accountNumber: String, fromDatae: String, toDate: String) {
-        
+        viewModel.filterTransactions(bankName: bankName,
+                                     accountNumber: accountNumber,
+                                     fromDate: fromDatae,
+                                     toDate: toDate)
+
+        filterView.isHidden = true
+        bankAccountsContainerView.backgroundColor = .white
+        bankAccountsContainerView.alpha = 1
+        containerView.alpha = 1
+        containerView.backgroundColor = .white
     }
 
     func didSelect(bankAccount: BankAccount?) {

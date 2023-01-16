@@ -17,12 +17,12 @@ class NetworkBankManager: ServiceBankAPIProtocol {
 
     func fetchBanks(completed: @escaping ([Bank], NetworkError?) -> Void) {
         let bankMock = [
-            Bank(imageName: "ing", name: "ING Bank"),
-            Bank(imageName: "bt", name: "Banca Transilvania"),
-            Bank(imageName: "rzb", name: "Raiffeisen Bank"),
-            Bank(imageName: "unicredit", name: "Unicredit Bank"),
-            Bank(imageName: "cec", name: "CEC Bank"),
-            Bank(imageName: "bcr", name: "BCR")
+            Bank(imageName: "ing", name: "ING Bank", url: "https://ing.ro/"),
+            Bank(imageName: "bt", name: "Banca Transilvania", url: "https://www.bancatransilvania.ro"),
+            Bank(imageName: "rzb", name: "Raiffeisen Bank", url: "https://www.raiffeisen.ro"),
+            Bank(imageName: "unicredit", name: "Unicredit Bank", url: "https://www.unicredit.ro"),
+            Bank(imageName: "cec", name: "CEC Bank", url: "https://www.cec.ro"),
+            Bank(imageName: "bcr", name: "BCR", url: "https://www.bcr.ro")
         ]
 
         completed(bankMock, nil)

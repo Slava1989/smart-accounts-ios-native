@@ -13,6 +13,8 @@ protocol SetupViewDelegate: AnyObject {
     func showCurrencyFormField()
     func showCurrencyTableView()
     func showPeriodTableView()
+    func hideCurrencyTableView()
+    func sendRequest()
 }
 
 final class SetupView: UIView, TableOptionsDelegate {
@@ -219,7 +221,22 @@ final class SetupView: UIView, TableOptionsDelegate {
             isCurrencySet = true
             currencyFormField.isHidden = false
             delegate?.showCurrencyFormField()
+
+            return
         }
+
+        if isAccountSet && isCurrencySet {
+            delegate?.sendRequest()
+        }
+    }
+
+    func resetView() {
+        isPeriodSet = false
+        isAccountSet = false
+        isCurrencySet = false
+
+        accountTitleField.isHidden = true
+        currencyFormField.isHidden = true
     }
 
     @objc private func didTapPeriodField() {
@@ -238,6 +255,8 @@ final class SetupView: UIView, TableOptionsDelegate {
     private func showOrHideCurrencyTable(isShown: Bool) {
         if !isShown {
             delegate?.showCurrencyTableView()
+        } else {
+            delegate?.hideCurrencyTableView()
         }
 
         bankTitleLabel.isHidden = !isShown

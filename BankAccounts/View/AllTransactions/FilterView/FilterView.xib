@@ -305,11 +305,6 @@
                 <constraint firstItem="EP9-Kw-RsK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="nh4-1j-XUG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="L1f-YE-rke"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="54.961832061068698" y="100"/>
         </view>
     </objects>

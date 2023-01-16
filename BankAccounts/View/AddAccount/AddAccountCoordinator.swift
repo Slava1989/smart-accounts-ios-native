@@ -26,4 +26,9 @@ final class AddAccountCoordinator: Coordinator {
     func end() {
         rootViewController.popViewController(animated: true)
     }
+
+    func goToWebPage(bankURL: String) {
+        let webPageController = WebPageController(url: bankURL)
+        rootViewController.pushViewController(webPageController, animated: true)
+    }
 }

@@ -105,7 +105,6 @@ final class AddAccountFormField: UIView {
             separatorView.heightAnchor.constraint(equalToConstant: 1)
         ])
 
-
         if isExpandable {
             expandableStackView.addArrangedSubview(fieldValue)
             expandableStackView.addArrangedSubview(chevronImage)

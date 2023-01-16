@@ -13,6 +13,8 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
     private var banks: [Bank] = []
     private var heightConstraint: NSLayoutConstraint?
     private var cancellable = Set<AnyCancellable>()
+    private var lastHeightConstant: Double = 0.0
+    private var selectedBank: Bank?
 
     private lazy var contentContainerView: UIView = {
         let view = UIView()
@@ -217,6 +219,7 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         prepareSetupAccountView()
         configureSetupAccontView(bankTitle: banks[indexPath.row].name)
+        selectedBank = banks[indexPath.row]
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -242,6 +245,7 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
     //MARK: SetupViewDelegate
     func didTapClose() {
         closeAccountView()
+        setupView.resetView()
     }
 
     func showAccountTitleField() {
@@ -261,11 +265,21 @@ final class AddAccountViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func showCurrencyTableView() {
+        lastHeightConstant = Double(heightConstraint?.constant ?? 0.0)
         heightConstraint?.constant = 250
         UIView.animate(withDuration: 0.5, delay: 0) {
-
             self.view.layoutIfNeeded()
         }
+    }
+
+    func hideCurrencyTableView() {
+        heightConstraint?.constant = lastHeightConstant != 0 ? lastHeightConstant :  250
+    }
+
+    func sendRequest() {
+        heightConstraint?.constant = 250
+        viewModel.goToWebPage(bankURL: selectedBank?.url ?? "")
+        setupView.resetView()
     }
 
     func showPeriodTableView() {

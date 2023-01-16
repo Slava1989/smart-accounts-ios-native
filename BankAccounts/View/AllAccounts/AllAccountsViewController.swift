@@ -193,6 +193,12 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row < bankAccounts.count {
+            if bankAccounts[indexPath.row].currency.rawValue != "RON" {
+                return 120
+            }
+        }
+
         return 60
     }
 
@@ -237,7 +243,7 @@ final class AllAccountsViewController: UIViewController, UITableViewDelegate, UI
         if indexPath.row < bankAccounts.count {
             guard let bankAccountCell = tableView.dequeueReusableCell(withIdentifier: "bankAccountCell", for: indexPath) as? BankAccountCell else { return UITableViewCell() }
 
-            bankAccountCell.configure(bankAccout: bankAccounts[indexPath.row])
+            bankAccountCell.configure(bankAccount: bankAccounts[indexPath.row])
             return bankAccountCell
         }
 

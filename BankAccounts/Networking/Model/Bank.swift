@@ -10,4 +10,5 @@ import Foundation
 struct Bank: Codable {
     let imageName: String
     let name: String
+    let url: String
 }

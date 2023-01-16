@@ -14,6 +14,7 @@ protocol AllTransactionsViewModelInput: AnyObject {
     func didChangeSearchText(searchText: String)
     func checkDate(date: Date) -> String
     func filterTransactions(by bankAccount: BankAccount?)
+    func filterTransactions(bankName: String, accountNumber: String, fromDate: String, toDate: String)
 }
 
 class ViewModelTransaction {
@@ -65,6 +66,22 @@ final class AllTransactionsViewModel: AllTransactionsViewModelInput {
         }.sorted { $0.date > $1.date }
 
         return modeledTransactions
+    }
+
+    func filterTransactions(bankName: String, accountNumber: String, fromDate: String, toDate: String) {
+        let from = fromDate.toDate() ?? Date()
+        let to = toDate.toDate() ?? Date()
+
+        let filteredTransactions = modeledTransactions.filter { transactionsArray in
+            transactionsArray.transactions.contains { transaction in
+                let transactionDate = transaction.date.toDate() ?? Date()
+
+                return transaction.bankName.lowercased().contains(bankName.lowercased()) &&
+                transactionDate.isBetween(from, and: to)
+            }
+        }
+
+        subject.send(filteredTransactions)
     }
 
     func checkDate(date: Date) -> String {

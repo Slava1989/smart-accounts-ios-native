@@ -34,7 +34,7 @@ class NetworkAccountManager: ServiceAPIProtocol {
             BankAccount(
                 bankName: "ING",
                 amount: 6342.28,
-                currency: .RON,
+                currency: .EUR,
                 bankNameShort: "ING",
                 iban: "12347890987654321",
                 color: "orange",

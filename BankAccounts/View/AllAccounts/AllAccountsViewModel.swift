@@ -34,7 +34,15 @@ final class AllAccountsViewModel: AccountsViewModelInput {
             guard let self = self else { return }
 
             self.bankAccounts = bankAccounts
-            self.totalAmount = bankAccounts.reduce(0) { $0 + $1.amount }
+
+            bankAccounts.reduce(0.0) { partialResult, bankAccount in
+                partialResult += bankAccount.amount
+            }
+
+            bankAccounts.reduce(0.0) { partialResult, bankAccount in
+                return partialResult += bankAccount.amount
+            }
+            self.totalAmount = bankAccounts.reduce(0.0) { $0 + $1.amount }
             let entries = bankAccounts.map { bankAccount -> PieChartDataEntry in
                 let percentValue = bankAccount.amount / self.totalAmount * 100
                 return PieChartDataEntry(value: percentValue, label: bankAccount.bankNameShort)

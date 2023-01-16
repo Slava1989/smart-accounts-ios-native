@@ -39,6 +39,7 @@
 		BA20CF3C296D844C00F3C93A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */; };
 		BA20CF40296DADE700F3C93A /* TableOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF3F296DADE700F3C93A /* TableOptions.swift */; };
 		BA20CF43296DAF9E00F3C93A /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF42296DAF9E00F3C93A /* OptionCell.swift */; };
+		BA51EFDF29751B9B005F9EE9 /* WebPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA51EFDE29751B9B005F9EE9 /* WebPageController.swift */; };
 		BA67D44A2954B585005B57C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D4492954B585005B57C9 /* AppDelegate.swift */; };
 		BA67D44C2954B585005B57C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D44B2954B585005B57C9 /* SceneDelegate.swift */; };
 		BA67D44E2954B585005B57C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D44D2954B585005B57C9 /* ViewController.swift */; };
@@ -65,6 +66,7 @@
 		BAC2C33C2970C79C0095345F /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C33B2970C79B0095345F /* SearchTextField.swift */; };
 		BAC2C33F297157F40095345F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC2C33E297157F40095345F /* FilterView.swift */; };
 		BAC2C341297158040095345F /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC2C340297158040095345F /* FilterView.xib */; };
+		BAE530E62974C563003A528E /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE530E52974C563003A528E /* Date+Ext.swift */; };
 		F7C8421E63F43351EF1A7A34 /* Pods_BankAccounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9F3F575DA6751ECD85567E /* Pods_BankAccounts.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +110,7 @@
 		BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		BA20CF3F296DADE700F3C93A /* TableOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOptions.swift; sourceTree = "<group>"; };
 		BA20CF42296DAF9E00F3C93A /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
+		BA51EFDE29751B9B005F9EE9 /* WebPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageController.swift; sourceTree = "<group>"; };
 		BA67D4462954B585005B57C9 /* SmartAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA67D4492954B585005B57C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA67D44B2954B585005B57C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		BAC2C33B2970C79B0095345F /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		BAC2C33E297157F40095345F /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		BAC2C340297158040095345F /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		BAE530E52974C563003A528E /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		C40E7E36DBD4A613646642AF /* Pods_SmartAccount_Dashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartAccount_Dashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF465E8201666CFD4091F /* Pods-SmartAccount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartAccount.release.xcconfig"; path = "Target Support Files/Pods-SmartAccount/Pods-SmartAccount.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,6 +227,7 @@
 		BA20CEFB29633A7700F3C93A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BA51EFDD29751988005F9EE9 /* BankWebView */,
 				BA20CF26296C626C00F3C93A /* AddAccount */,
 				BA20CF0E296837CB00F3C93A /* AllTransactions */,
 				BA1F4DF3296317F400D8EB55 /* AllAccounts */,
@@ -358,6 +363,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		BA51EFDD29751988005F9EE9 /* BankWebView */ = {
+			isa = PBXGroup;
+			children = (
+				BA51EFDE29751B9B005F9EE9 /* WebPageController.swift */,
+			);
+			path = BankWebView;
+			sourceTree = "<group>";
+		};
 		BA67D43D2954B585005B57C9 = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +447,7 @@
 				BAC2C32C296F54CF0095345F /* UITextField+Ext.swift */,
 				BAC2C333296F684A0095345F /* Array+Ext.swift */,
 				BAC2C335296F715B0095345F /* String+Ext.swift */,
+				BAE530E52974C563003A528E /* Date+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -725,8 +739,10 @@
 				BA20CF37296CD51300F3C93A /* FormField.swift in Sources */,
 				BAC2C32A296F33B00095345F /* AllCell.swift in Sources */,
 				BA1F4DDE2962F45D00D8EB55 /* SceneDelegate.swift in Sources */,
+				BAE530E62974C563003A528E /* Date+Ext.swift in Sources */,
 				BA20CF0729639AF400F3C93A /* BankAccountCell.swift in Sources */,
 				BA20CF10296838C800F3C93A /* AllTransactionsCoordinator.swift in Sources */,
+				BA51EFDF29751B9B005F9EE9 /* WebPageController.swift in Sources */,
 				BAC2C339297006100095345F /* BankAccountView.swift in Sources */,
 				BA20CF40296DADE700F3C93A /* TableOptions.swift in Sources */,
 				BA20CF2A296C629800F3C93A /* AddAccountViewController.swift in Sources */,

@@ -140,6 +140,8 @@ final class FilterView: UIView, UITableViewDataSource, UITableViewDelegate {
         toDatePicker.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: 150)
         toDatePicker.datePickerMode = .date
         toDatePicker.addTarget(self, action: #selector(handleToDatePicker(sender:)), for: .valueChanged)
+        toDatePicker.maximumDate = Date()
+
 
         fromTextField.inputView = fromDatePicker
         toTextField.inputView = toDatePicker
@@ -153,15 +155,14 @@ final class FilterView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
 
     @IBAction func applyButtonDidTap(_ sender: UIButton) {
-        print(#function)
         guard let bankName = bankNameLabel.text,
               let accountNumber = accountNumberLabel.text,
               let fromTextField = fromTextField.text,
               !fromTextField.isEmpty,
-              fromTextField == "From",
+              fromTextField != "From",
               let toTextField =  toTextField.text,
               !toTextField.isEmpty,
-              toTextField == "To" else {
+              toTextField != "To" else {
             return
         }
 

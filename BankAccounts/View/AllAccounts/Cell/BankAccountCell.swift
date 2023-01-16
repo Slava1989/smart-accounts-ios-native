@@ -22,9 +22,28 @@ final class BankAccountCell: UITableViewCell {
         return label
     }()
 
+    private lazy var amountStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        stackView.alignment = .trailing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
     private lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var disclaimerLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.text = "Suma totala estimativa in RON"
+        label.font = UIFont(name: "Helvetica-BoldOblique", size: 13)
+        label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -54,17 +73,30 @@ final class BankAccountCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: circleView.trailingAnchor, constant: 20)
         ])
 
-        self.addSubview(amountLabel)
+        amountStackView.addArrangedSubview(amountLabel)
+        amountStackView.addArrangedSubview(disclaimerLabel)
+
+        self.addSubview(amountStackView)
         NSLayoutConstraint.activate([
-            amountLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            amountLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            amountStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            amountStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
     }
 
-    func configure(bankAccout: BankAccount) {
-        circleView.backgroundColor = UIColor(named: bankAccout.color)
-        titleLabel.text = bankAccout.bankNameShort
-        amountLabel.text = bankAccout.amount.formatted(.currency(code:"RON")
+    func configure(bankAccount: BankAccount) {
+        circleView.backgroundColor = UIColor(named: bankAccount.color)
+        titleLabel.text = bankAccount.bankNameShort
+        disclaimerLabel.isHidden = true
+
+        if bankAccount.currency.rawValue != "RON" {
+            disclaimerLabel.isHidden = false
+            amountLabel.text = (20.24 * bankAccount.amount).formatted(.currency(code:"RON")
+                                        .locale(Locale(identifier: "fr-FR")))
+            return
+        }
+
+        amountLabel.text = bankAccount.amount.formatted(.currency(code:"RON")
                                     .locale(Locale(identifier: "fr-FR")))
+
     }
 }
