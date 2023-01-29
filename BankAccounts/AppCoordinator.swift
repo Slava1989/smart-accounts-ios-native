@@ -8,6 +8,9 @@
 import UIKit
 
 protocol Coordinator: AnyObject {
+//    var rootController: UIViewController { get }
+//    var childs: [Coordinator] { get }
+
     func start()
     func end()
 }

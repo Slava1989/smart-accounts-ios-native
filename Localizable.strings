@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  SmartAccounts
+
+  Created by Veaceslav Chirita on 22.01.2023.
+  
+*/
+
+"main.greetings.title" = "Salut";
+
+//MARK: All accounts
+"all.accounts.screen.title"                        = "Cont all";
+"all.accounts.screen.yourAccounts"                 = "Conturile tale";
+"all.accounts.screen.disclaimer"                   = "Please keep in mind that the data displayed will refresh every 60 minutes from the first time is displayed on this dashboard!";
+"all.accounts.screen.disclaimerCurrency"           = "Suma totala estimativa in %@";
+"all.accounts.screen.noAvailableBalance"           = "No available balance for this bank";
+"all.accounts.screen.delete"                       = "Sterge";
+"all.accounts.screen.cancel"                       = "Anuleaza";
+
+"all.Accounts.screen.alert.title"                  = "Are you sure?";
+"all.Accounts.screen.alert.body"                   = "Are you sure you want to delete all consents for this bank?";
+
+"all.Accounts.screen.button.addAccount"            = "Adauga un cont";
+
+"all.Accounts.screen.button.allTransactions"       = "Vezi toate tranzactiile >";
+
+//MARK: Add account
+"add.account.screen.disclaimer"                    = "Please keep in mind that the data displayed will refresh every 60 minutes from the first time is displayed on this dashboard!";
+"add.account.screen.select.period"                 = "Selecteaza perioada";
+"add.account.screen.select.account"                = "Selecteaza contul";
+"add.account.screen.select.currency"               = "Selecteaza moneda contului";
+"add.account.screen.send.request"                  = "Trimite cererea";
+
+//MARK: All transactions
+"all.transactions.screen.title"                    = "Multibanking";
+"all.transactions.screen.transactionList"          = "Lista tranzactii";
+
+"all.transactions.screen.card.cell.name"           = "Nume";
+"all.transactions.screen.card.cell.account.number" = "Numar cont";
+"all.transactions.screen.card.cell.balance"        = "Balanta";
+
+"all.transactions.screen.all.cell.showing"         = "Se afiseaza acum";
+"all.transactions.screen.all.cell.accounts"        = "Toate conturile";
+"all.transactions.screen.all.cell.footer"          = "Daca doresti sa vezi toate tranzactiile dintr-un cont anume, alege un card din dreapta";
+
+"all.transactions.screen.search.placeholder"       = "Cauta in tranzactii";
+

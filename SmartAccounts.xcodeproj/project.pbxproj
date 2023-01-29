@@ -36,13 +36,18 @@
 		BA20CF34296CC38B00F3C93A /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF33296CC38B00F3C93A /* BankCell.swift */; };
 		BA20CF37296CD51300F3C93A /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF36296CD51300F3C93A /* FormField.swift */; };
 		BA20CF3A296CD5E100F3C93A /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF39296CD5E100F3C93A /* SetupView.swift */; };
-		BA20CF3C296D844C00F3C93A /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */; };
 		BA20CF40296DADE700F3C93A /* TableOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF3F296DADE700F3C93A /* TableOptions.swift */; };
 		BA20CF43296DAF9E00F3C93A /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA20CF42296DAF9E00F3C93A /* OptionCell.swift */; };
 		BA51EFDF29751B9B005F9EE9 /* WebPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA51EFDE29751B9B005F9EE9 /* WebPageController.swift */; };
 		BA51EFE22975344E005F9EE9 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA51EFE12975344E005F9EE9 /* InformationView.swift */; };
 		BA51EFE529754E65005F9EE9 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA51EFE429754E65005F9EE9 /* ErrorView.swift */; };
 		BA51EFE729754E72005F9EE9 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA51EFE629754E72005F9EE9 /* ErrorView.xib */; };
+		BA5343032981D8D900BF3349 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5343022981D8D900BF3349 /* R.generated.swift */; };
+		BA5343042981D8D900BF3349 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5343022981D8D900BF3349 /* R.generated.swift */; };
+		BA5343052981D8D900BF3349 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5343022981D8D900BF3349 /* R.generated.swift */; };
+		BA5343102981DBC300BF3349 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA53430F2981DBC300BF3349 /* Localizable.strings */; };
+		BA5343112981DBC300BF3349 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA53430F2981DBC300BF3349 /* Localizable.strings */; };
+		BA5343122981DBC300BF3349 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA53430F2981DBC300BF3349 /* Localizable.strings */; };
 		BA67D44A2954B585005B57C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D4492954B585005B57C9 /* AppDelegate.swift */; };
 		BA67D44C2954B585005B57C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D44B2954B585005B57C9 /* SceneDelegate.swift */; };
 		BA67D44E2954B585005B57C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67D44D2954B585005B57C9 /* ViewController.swift */; };
@@ -110,13 +115,14 @@
 		BA20CF33296CC38B00F3C93A /* BankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
 		BA20CF36296CD51300F3C93A /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		BA20CF39296CD5E100F3C93A /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
-		BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		BA20CF3F296DADE700F3C93A /* TableOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableOptions.swift; sourceTree = "<group>"; };
 		BA20CF42296DAF9E00F3C93A /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		BA51EFDE29751B9B005F9EE9 /* WebPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageController.swift; sourceTree = "<group>"; };
 		BA51EFE12975344E005F9EE9 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		BA51EFE429754E65005F9EE9 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		BA51EFE629754E72005F9EE9 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		BA5343022981D8D900BF3349 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		BA53430F2981DBC300BF3349 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BA67D4462954B585005B57C9 /* SmartAccount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartAccount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA67D4492954B585005B57C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA67D44B2954B585005B57C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,7 +214,7 @@
 			children = (
 				BAC2C32B296F54BA0095345F /* Helpers */,
 				BA20CEFC29633A8F00F3C93A /* Networking */,
-				BA20CEFB29633A7700F3C93A /* View */,
+				BA20CEFB29633A7700F3C93A /* BankAccountJorneys */,
 				BA1F4DED296314CD00D8EB55 /* AppCoordinator.swift */,
 				BA1F4DDB2962F45D00D8EB55 /* AppDelegate.swift */,
 				BA1F4DDD2962F45D00D8EB55 /* SceneDelegate.swift */,
@@ -231,7 +237,7 @@
 			path = AllAccounts;
 			sourceTree = "<group>";
 		};
-		BA20CEFB29633A7700F3C93A /* View */ = {
+		BA20CEFB29633A7700F3C93A /* BankAccountJorneys */ = {
 			isa = PBXGroup;
 			children = (
 				BA51EFDD29751988005F9EE9 /* BankWebView */,
@@ -239,7 +245,7 @@
 				BA20CF0E296837CB00F3C93A /* AllTransactions */,
 				BA1F4DF3296317F400D8EB55 /* AllAccounts */,
 			);
-			path = View;
+			path = BankAccountJorneys;
 			sourceTree = "<group>";
 		};
 		BA20CEFC29633A8F00F3C93A /* Networking */ = {
@@ -310,10 +316,7 @@
 		BA20CF26296C626C00F3C93A /* AddAccount */ = {
 			isa = PBXGroup;
 			children = (
-				BA20CF3E296DADAC00F3C93A /* TableOptions */,
-				BA20CF38296CD5CC00F3C93A /* SetupFlow */,
-				BA20CF35296CD4DD00F3C93A /* FormField */,
-				BA20CF32296CC38200F3C93A /* Cell */,
+				BA51EFE82976C5E3005F9EE9 /* Views */,
 				BA20CF27296C628600F3C93A /* AddAccountCoordinator.swift */,
 				BA20CF29296C629800F3C93A /* AddAccountViewController.swift */,
 				BA20CF2B296C62A400F3C93A /* AddAccountViewModel.swift */,
@@ -341,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				BA20CF36296CD51300F3C93A /* FormField.swift */,
-				BA20CF3B296D844C00F3C93A /* Storyboard.storyboard */,
 			);
 			path = FormField;
 			sourceTree = "<group>";
@@ -396,9 +398,22 @@
 			path = ErrorView;
 			sourceTree = "<group>";
 		};
+		BA51EFE82976C5E3005F9EE9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA20CF3E296DADAC00F3C93A /* TableOptions */,
+				BA20CF38296CD5CC00F3C93A /* SetupFlow */,
+				BA20CF35296CD4DD00F3C93A /* FormField */,
+				BA20CF32296CC38200F3C93A /* Cell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BA67D43D2954B585005B57C9 = {
 			isa = PBXGroup;
 			children = (
+				BA53430F2981DBC300BF3349 /* Localizable.strings */,
+				BA5343022981D8D900BF3349 /* R.generated.swift */,
 				BA67D4482954B585005B57C9 /* Breakig-Point */,
 				BA67D4622954B93C005B57C9 /* Breaking-PointWidget */,
 				BA1F4DDA2962F45D00D8EB55 /* BankAccounts */,
@@ -518,6 +533,7 @@
 			buildConfigurationList = BA1F4DEC2962F46100D8EB55 /* Build configuration list for PBXNativeTarget "BankAccounts" */;
 			buildPhases = (
 				04925BDF6B81132B0C5AFF9E /* [CP] Check Pods Manifest.lock */,
+				BA5342FD2981D6AB00BF3349 /* ShellScript */,
 				BA1F4DD52962F45D00D8EB55 /* Sources */,
 				BA1F4DD62962F45D00D8EB55 /* Frameworks */,
 				BA1F4DD72962F45D00D8EB55 /* Resources */,
@@ -614,10 +630,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA5343122981DBC300BF3349 /* Localizable.strings in Resources */,
 				BAC2C341297158040095345F /* FilterView.xib in Resources */,
 				BA1F4DE82962F46100D8EB55 /* LaunchScreen.storyboard in Resources */,
 				BA1F4DE52962F46100D8EB55 /* Assets.xcassets in Resources */,
-				BA20CF3C296D844C00F3C93A /* Storyboard.storyboard in Resources */,
 				BA51EFE729754E72005F9EE9 /* ErrorView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,6 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA67D4562954B587005B57C9 /* LaunchScreen.storyboard in Resources */,
+				BA5343102981DBC300BF3349 /* Localizable.strings in Resources */,
 				BA67D4532954B587005B57C9 /* Assets.xcassets in Resources */,
 				BA67D4512954B585005B57C9 /* Main.storyboard in Resources */,
 			);
@@ -637,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA67D4702954B93E005B57C9 /* LaunchScreen.storyboard in Resources */,
+				BA5343112981DBC300BF3349 /* Localizable.strings in Resources */,
 				BA67D46D2954B93E005B57C9 /* Assets.xcassets in Resources */,
 				BA67D46B2954B93C005B57C9 /* Main.storyboard in Resources */,
 			);
@@ -689,6 +707,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BA5342FD2981D6AB00BF3349 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		D782549E0C53FA657647F6A4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -735,6 +772,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA5343052981D8D900BF3349 /* R.generated.swift in Sources */,
 				BA20CF28296C628600F3C93A /* AddAccountCoordinator.swift in Sources */,
 				BA1F4DEE296314CD00D8EB55 /* AppCoordinator.swift in Sources */,
 				BA20CEFF29633B4900F3C93A /* NetworkAccountManager.swift in Sources */,
@@ -785,6 +823,7 @@
 				BA67D44E2954B585005B57C9 /* ViewController.swift in Sources */,
 				BA67D44A2954B585005B57C9 /* AppDelegate.swift in Sources */,
 				BA67D44C2954B585005B57C9 /* SceneDelegate.swift in Sources */,
+				BA5343032981D8D900BF3349 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +834,7 @@
 				BA67D4682954B93C005B57C9 /* WidgetMainController.swift in Sources */,
 				BA67D4792955062E005B57C9 /* MainWidgetViewModel.swift in Sources */,
 				BA67D4762955051C005B57C9 /* MainCoordinator.swift in Sources */,
+				BA5343042981D8D900BF3349 /* R.generated.swift in Sources */,
 				BA67D4642954B93C005B57C9 /* AppDelegate.swift in Sources */,
 				BA67D47E295EDF3D005B57C9 /* RoundNumberView.swift in Sources */,
 				BA67D4662954B93C005B57C9 /* SceneDelegate.swift in Sources */,
@@ -862,8 +902,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -891,8 +931,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

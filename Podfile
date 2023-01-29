@@ -9,6 +9,7 @@ target 'BankAccounts' do
 
   pod 'Charts'
   pod 'IQKeyboardManagerSwift'
+  pod 'R.swift'
 
 end
 

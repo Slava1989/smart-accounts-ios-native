@@ -9,6 +9,10 @@ import UIKit
 
 final class WidgetMainController: UIViewController {
 
+    struct Constants {
+        static var greatings = R.string.localizable.mainGreetingsTitle
+    }
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +53,7 @@ final class WidgetMainController: UIViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Salut Alexandru"
+        label.text = "\(Constants.greatings) Alexandru"
         label.numberOfLines = 0
         label.sizeToFit()
         label.textAlignment = .center
